@@ -1,14 +1,12 @@
 package br.com.cruzvita.exercicio.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.cruzvita.exercicio.model.Carro;
 import br.com.cruzvita.exercicio.request.CarroRequest;
 import br.com.cruzvita.exercicio.service.CarroService;
 
@@ -21,10 +19,8 @@ public class CarroController {
 	
 	
 	@PostMapping("/recebe")
-	public List<Carro> listarTodos(@RequestBody CarroRequest listaCarros) {
-		System.out.println(listaCarros.toString());
-		return carroService.receberLista(listaCarros);
-		
-	}
+	public ResponseEntity<String> listarTodos(@RequestBody CarroRequest listaCarros){
+		  return ResponseEntity.ok(carroService.receberLista(listaCarros));	  
+	 }
 
 }
